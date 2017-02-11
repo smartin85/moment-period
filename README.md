@@ -1,4 +1,5 @@
 # moment-period
+[![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Build Status][travis-image]][travis-url]
 Handling periods in moment.js
 
 # Register periods
@@ -105,3 +106,9 @@ period.period(null).period(); // undefined or default-period
 ```js
 moment.period.setDefault(null);
 ```
+
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
+
+[travis-url]: http://travis-ci.org/smartin85/moment-period
+[travis-image]: http://img.shields.io/travis/smartin85/moment-period/develop.svg?style=flat
