@@ -1,5 +1,6 @@
 # moment-period
-[![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Build Status][travis-image]][travis-url]
+[![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url]  
+
 Handling periods in moment.js
 
 # Register periods
