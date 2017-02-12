@@ -1,7 +1,43 @@
 # moment-period
-[![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url]  
+[![MIT License][license-image]][license-url] 
+[![Build Status][travis-image]][travis-url]
+[![Dependency Status][versioneye-image]][versioneye-url]
+[![npm version][npm-image]][npm-url]  
 
 Handling periods in moment.js
+
+## Getting Started
+moment-period can be included in your app by different ways:
+
+### Node.js
+moment-period can be installed with npm and required into a script:
+```
+npm install --save moment-period
+```
+```js
+var moment = require('moment-period');
+```
+
+
+### Browser
+Just include the momentjs script and then the moment-period script:
+```html
+<script src="moment.min.js"></script>
+<script src="moment-period.min.js"></script>
+```
+
+### Require.js
+```js
+require.config({
+    paths: {
+        "moment": "path/to/moment"
+    }
+});
+define(["path/to/moment-period"], function (moment) {
+    // ...
+});
+```
+
 
 ## Register periods
 New periods can be registered with an object or an array of objects
@@ -29,10 +65,9 @@ moment.period.add([
         },
         align: function() {     // function to set the current moment to the start of the period
             var year = this.year(),
-                month = this.month(),
-                date = this.date();
+                month = this.month();
 
-            return this.year(month < 5 || (month === 5 && date < 1 ? year - 1 : year)).month(5).startOf('month');
+            return this.year(month < 5 ? year - 1 : year)).month(5).startOf('month');
         }
     });
 
@@ -113,3 +148,9 @@ moment.period.setDefault(null);
 
 [travis-url]: http://travis-ci.org/smartin85/moment-period
 [travis-image]: https://travis-ci.org/smartin85/moment-period.svg?branch=master
+
+[versioneye-image]: https://www.versioneye.com/user/projects/58a0655f940b230032da590e/badge.svg
+[versioneye-url]: https://www.versioneye.com/user/projects/58a0655f940b230032da590e
+
+[npm-image]: https://badge.fury.io/js/moment-period.svg
+[npm-url]: https://badge.fury.io/js/moment-period

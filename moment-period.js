@@ -23,21 +23,20 @@
 		major = +momentVersion[0],
 		minor = +momentVersion[1],
         patch = +momentVersion[2],
-        mfn = moment.fn,
-        original = {},
-        fn;
+        fn = moment.fn,
+        original = {};
    
 
 	/************************************
 		Global Methods
 	************************************/
 
-    function replaceOriginal(name, index) {
-        original[name] = mfn[name];
-        mfn[name] = function() {
+    function replaceOriginal(name, index, replacement) {
+        original[name] = fn[name];
+        fn[name] = function() {
             var period = getPeriod.call(this, arguments[index]);
             if(period) {
-                return fn[name].apply(this, arguments);
+                return replacement.apply(this, arguments);
             }
             return original[name].apply(this, arguments);
         };
@@ -177,133 +176,113 @@
         this[periodFlag] && this.add(1, 'p').subtract(1, 'ms');
     }
 
-    fn = {
-        startOf: function(name, options) {
-            if(nameIsOwnPeriod(name)) {
-                return this.period(true);
-            }
-
-            if(periods[name]) {
-                return this.period(name, options).period(true);
-            }
-
-            return original.startOf.apply(this, arguments);
-        },
-        endOf: function(name, options) {
-            if(nameIsOwnPeriod(name)) {
-                return this.period(false);
-            }
-
-            if(periods[name]) {
-                return this.period(name, options).period(false);
-            }
-
-            return original.endOf.apply(this, arguments);
-        },
-        add: function(count, unit) {
-            var period = getPeriod.call(this, unit);
-            
-            if(period) {
-                return original.add.call(this, period.count * count, period.unit);
-            }
-
-            return original.add.apply(this, arguments);
-        },
-        subtract: function(count, unit) {
-            var period = getPeriod.call(this, unit);
-            
-            if(period) {
-                return original.subtract.call(this, period.count * count, period.unit);
-            }
-
-            return original.subtract.apply(this, arguments);
-        },
-        isBefore: function(mom, unit) {
-            var clone,
-                period = getPeriod.call(this, unit);
-
-            if(period) {
-                clone = (moment.isMoment(mom) ? mom.clone() : moment(mom)).period(nameIsOwnPeriod(unit) ? true : period.name);
-                return this.clone().period(period.name).period(false) < clone.period(true);
-            }
-
-            return original.isBefore.apply(this, arguments);
-        },
-        isAfter: function(mom, unit) {
-            var clone,
-                period = getPeriod.call(this, unit);
-
-            if(period) {
-                clone = (moment.isMoment(mom) ? mom.clone() : moment(mom)).period(nameIsOwnPeriod(unit) ? true : period.name);
-                return this.clone().period(period.name).period(true) > clone.period(false);
-            }
-
-            return original.isAfter.apply(this, arguments);
-        },
-        isSame: function(mom, unit) {
-            var clone, self,
-                period = getPeriod.call(this, unit);
-
-            if(nameIsOwnPeriod(unit)) {
-                clone = (moment.isMoment(mom) ? mom.clone() : moment(mom)).fromTo();
-                self = this.fromTo();
-                return self.from <= clone.from && self.to >= clone.to;
-            } else if(period) {
-                clone = (moment.isMoment(mom) ? mom.clone() : moment(mom)).period(period.name).fromTo();
-                self = this.clone().period(period.name).fromTo();
-                return self.from <= clone.from && self.to >= clone.to;
-            }
-
-            return original.isSame.apply(this, arguments);
-        },
-        isSameOrBefore: function(mom, unit) {
-            if(nameIsOwnPeriod(unit)) {
-                return fn.isSame.apply(this, arguments) || fn.isBefore.apply(this, arguments);
-            }
-
-            return original.isSameOrBefore.apply(this, arguments);
-        },
-        isSameOrAfter: function(mom, unit) {
-            if(nameIsOwnPeriod(unit)) {
-                return fn.isSame.apply(this, arguments) || fn.isAfter.apply(this, arguments);
-            }
-
-            return original.isSameOrAfter.apply(this, arguments);
-        },
-        isBetween: function(from, to, unit, inclusivity) {
-            var self;
-            if(nameIsOwnPeriod(unit)) {
-                from = (moment.isMoment(from) ? from.clone() : moment(from)).period(false);
-                to = (moment.isMoment(to) ? to.clone() : moment(to)).period(true);
-                self = getFromTo(this);       
-                return original.isBetween.call(self.from, from, to, null, inclusivity) && original.isBetween.call(self.to, from, to, null, inclusivity);
-            }
-
-            return original.isBetween.apply(this, arguments);
-        },
-        format: function(name) {
-            var period = getPeriod.call(this, name),
-                format = period && period.format,
-                args = Array.prototype.slice.call(arguments);
-            
-            if(typeof format === 'function') {
-                return format.call(this, args.shift());
-            }
-
-            if(typeof format === 'string') {
-                return original.format.call(this, format);
-            }
-
-            return original.format.call(this, period ? undefined : name);
-        },
-        fromTo: function(period, options) {
-            var clone = this.clone();
-            if(period) {
-                clone.period(period, options);
-            }
-            return getFromTo(clone);
+    function startOf(name, options) {
+        if(nameIsOwnPeriod(name)) {
+            return this.period(true);
         }
-    };
+
+        return this.period(name, options).period(true);
+    }
+
+    function endOf(name, options) {
+        if(nameIsOwnPeriod(name)) {
+            return this.period(false);
+        }
+        
+        return this.period(name, options).period(false);
+    }
+
+    function add(count, unit) {
+        var period = getPeriod.call(this, unit);
+
+        return original.add.call(this, period.count * count, period.unit);
+    }
+
+    function subtract(count, unit) {
+        var period = getPeriod.call(this, unit);
+        
+        return original.subtract.call(this, period.count * count, period.unit);
+    }
+
+    function isBefore(mom, unit) {
+        var period = getPeriod.call(this, unit),
+            clone = (moment.isMoment(mom) ? mom.clone() : moment(mom)).period(nameIsOwnPeriod(unit) ? true : period.name);
+
+        return this.clone().period(period.name).period(false) < clone.period(true);
+    }
+
+    function isAfter(mom, unit) {
+        var period = getPeriod.call(this, unit),
+            clone = (moment.isMoment(mom) ? mom.clone() : moment(mom)).period(nameIsOwnPeriod(unit) ? true : period.name);
+        
+        return this.clone().period(period.name).period(true) > clone.period(false);       
+    }
+
+    function isSame(mom, unit) {
+        var period = getPeriod.call(this, unit),
+            clone, self;
+
+        if(nameIsOwnPeriod(unit)) {
+            clone = (moment.isMoment(mom) ? mom.clone() : moment(mom)).fromTo();
+            self = this.fromTo();
+            return self.from <= clone.from && self.to >= clone.to;
+        }
+        
+        clone = (moment.isMoment(mom) ? mom.clone() : moment(mom)).period(period.name).fromTo();
+        self = this.clone().period(period.name).fromTo();
+
+        return self.from <= clone.from && self.to >= clone.to;
+    }
+
+    function isSameOrBefore(mom, unit) {
+        return isSame.apply(this, arguments) || isBefore.apply(this, arguments);
+    }
+
+    function isSameOrAfter(mom, unit) {
+        return isSame.apply(this, arguments) || isAfter.apply(this, arguments);
+    }
+
+    function isBetween(from, to, unit, inclusivity) {
+        var self,
+            period = getPeriod.call(this, unit);
+
+        if(nameIsOwnPeriod(unit)) {
+            from = (moment.isMoment(from) ? from.clone() : moment(from)).period(false);
+            to = (moment.isMoment(to) ? to.clone() : moment(to)).period(true);
+            self = getFromTo(this);
+        } else {
+            from = (moment.isMoment(from) ? from.clone() : moment(from)).period(period.name).period(false);
+            to = (moment.isMoment(to) ? to.clone() : moment(to)).period(period.name).period(true);
+            self = getFromTo(this.clone().period(period.name));
+        }
+
+        return original.isBetween.call(self.from, from, to, null, inclusivity) && original.isBetween.call(self.to, from, to, null, inclusivity);
+    }
+
+    function format(name) {
+        var period = getPeriod.call(this, name),
+            format = period && period.format,
+            args = Array.prototype.slice.call(arguments);
+        
+        if(typeof format === 'function') {
+            return format.call(this, args.shift());
+        }
+
+        if(typeof format === 'string') {
+            return original.format.call(this, format);
+        }
+
+        return original.format.call(this, period ? undefined : name);
+    }
+
+    function fromTo(period, options) {
+        var clone = this.clone();
+        if(period) {
+            clone.period(period, options);
+        }
+        return getFromTo(clone);
+    }
+
 
 
     /************************************
@@ -337,7 +316,7 @@
 		Interface with Moment.js
 	************************************/
 
-    mfn.period = function(input, options) {
+    fn.period = function(input, options) {
         
         // Return current period
         if(typeof input === 'undefined') {
@@ -372,18 +351,18 @@
         return this;
     };
 
-    mfn.fromTo = fn.fromTo;
-    replaceOriginal('startOf', 0);
-    replaceOriginal('endOf', 0);
-    replaceOriginal('add', 1);
-    replaceOriginal('subtract', 1);
-    replaceOriginal('isBefore', 1);
-    replaceOriginal('isAfter', 1);
-    replaceOriginal('isSame', 1);
-    replaceOriginal('isSameOrBefore', 1);
-    replaceOriginal('isSameOrAfter', 1);
-    replaceOriginal('isBetween', 2);
-    replaceOriginal('format', 0);
+    fn.fromTo = fromTo;
+    replaceOriginal('startOf', 0, startOf);
+    replaceOriginal('endOf', 0, endOf);
+    replaceOriginal('add', 1, add);
+    replaceOriginal('subtract', 1, subtract);
+    replaceOriginal('isBefore', 1, isBefore);
+    replaceOriginal('isAfter', 1, isAfter);
+    replaceOriginal('isSame', 1, isSame);
+    replaceOriginal('isSameOrBefore', 1, isSameOrBefore);
+    replaceOriginal('isSameOrAfter', 1, isSameOrAfter);
+    replaceOriginal('isBetween', 2, isBetween);
+    replaceOriginal('format', 0, format);
     
     // Cloning a moment should include the propertis for the current period and the it´s options.
     momentProperties.push(periodFlag);

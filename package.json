@@ -1,7 +1,7 @@
 {
   "name": "moment-period",
   "version": "1.0.0",
-  "description": "",
+  "description": "Handling periods in moment.js",
   "main": "index.js",
   "scripts": {
     "test": "gulp test"
