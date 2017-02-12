@@ -30,7 +30,7 @@ Just include the momentjs script and then the moment-period script:
 ### Browser with Require.js
 ```js
 define(["moment", "moment-period"], function (moment) {
-    // you probably won´t need a reference to moment-recur istself, so include it last
+    // you probably won´t need a reference to moment-period istself, so include it last
 });
 ```
 
