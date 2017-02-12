@@ -1,17 +1,17 @@
 (function (root, factory) {
 	"use strict";
 
-	if (typeof define === 'function' && define.amd) {
-		define(['moment'], factory);                 // AMD
-	} else if (typeof module === 'object' && module.exports) {
-		module.exports = factory(require('moment')); // Node
-	} else {
-		factory(root.moment);                        // Browser
-	}
+    if (typeof exports === 'object') {
+        module.exports = factory(require('moment'));            // Node
+    } else if (typeof define === 'function' && define.amd) {
+        define('moment-period', ['moment'], factory);           // AMD
+    } else {
+        root.moment = factory(root.moment);                     // Browser
+    }
 }(this, function (moment) {
 	"use strict";
 
-    var VERSION = "1.0.0",
+    var VERSION = "1.0.1",
         periods = {},
         periodFlag = '_p',
         optionsFlag = '_po',

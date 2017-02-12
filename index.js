@@ -1,1 +1,0 @@
-var moment = module.exports = require("./moment-period");

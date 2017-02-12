@@ -15,7 +15,8 @@ moment-period can be installed with npm and required into a script:
 npm install --save moment-period
 ```
 ```js
-var moment = require('moment-period');
+var moment = require('moment');
+require('moment-period');
 ```
 
 
@@ -26,15 +27,10 @@ Just include the momentjs script and then the moment-period script:
 <script src="moment-period.min.js"></script>
 ```
 
-### Require.js
+### Browser with Require.js
 ```js
-require.config({
-    paths: {
-        "moment": "path/to/moment"
-    }
-});
-define(["path/to/moment-period"], function (moment) {
-    // ...
+define(["moment", "moment-period"], function (moment) {
+    // you probably won´t need a reference to moment-recur istself, so include it last
 });
 ```
 

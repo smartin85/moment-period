@@ -1,8 +1,8 @@
 {
   "name": "moment-period",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Handling periods in moment.js",
-  "main": "index.js",
+  "main": "moment-period.js",
   "scripts": {
     "test": "gulp test"
   },
@@ -18,6 +18,15 @@
 	"bugs": {
 		"url": "https://github.com/smartin85/moment-period/issues"
 	},
+  "keywords": [
+    "momentjs",
+    "date",
+    "period",
+    "periods",
+    "interval",
+    "intervals",
+    "time"
+  ],
   "devDependencies": {
     "gulp": "~3.9.1",
     "gulp-uglifyjs": "~0.6.2",
