@@ -112,4 +112,4 @@ moment.period.setDefault(null);
 [license-url]: LICENSE
 
 [travis-url]: http://travis-ci.org/smartin85/moment-period
-[travis-image]: http://img.shields.io/travis/smartin85/moment-period/develop.svg?style=flat
+[travis-image]: https://travis-ci.org/smartin85/moment-period.svg?branch=master
