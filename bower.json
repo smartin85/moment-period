@@ -2,6 +2,7 @@
   "name": "moment-period",
   "description": "Handling periods in moment.js",
   "main": "moment-period.js",
+  "version": "1.0.4",
   "authors": [
     "Smartin Nematronic"
   ],

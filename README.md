@@ -34,6 +34,11 @@ define(["moment", "moment-period"], function (moment) {
 });
 ```
 
+### Bower
+```
+bower install --save moment-period
+```
+
 
 ## Register periods
 New periods can be registered with an object or an array of objects
