@@ -307,7 +307,7 @@
     period._default = defaultPeriod;
     period.setDefault = setDefaultPeriod;
     period.add = prepareRegisterPeriod;
-    period.fromTo = getFromTo; // TODO: Tests schreiben
+    period.fromTo = getFromTo;
 
     moment.period = period;
 
