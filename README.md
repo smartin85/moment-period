@@ -7,7 +7,7 @@
 Handling periods in moment.js
 
 ## Getting Started
-moment-period can be included in your app by different ways:
+moment-period can be included into your app in different ways:
 
 ### Node.js
 moment-period can be installed with npm and required into a script:
@@ -21,7 +21,7 @@ require('moment-period');
 
 
 ### Browser
-Just include the momentjs script and then the moment-period script:
+Just include the momentjs script and somewhere after that the moment-period script:
 ```html
 <script src="moment.min.js"></script>
 <script src="moment-period.min.js"></script>
