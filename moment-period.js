@@ -11,7 +11,7 @@
 }(this, function (moment) {
 	"use strict";
 
-    var VERSION = "1.0.4",
+    var VERSION = "1.0.5",
         periods = {},
         periodFlag = '_p',
         optionsFlag = '_po',
