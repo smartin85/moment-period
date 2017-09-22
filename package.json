@@ -1,23 +1,24 @@
 {
   "name": "moment-period",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Handling periods in moment.js",
   "main": "moment-period.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "gulp"
   },
   "author": "Smartin Nematronic",
   "license": "MIT",
   "dependencies": {
     "moment": ">= 2.8.1 <3.0.0"
   },
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/smartin85/moment-period.git"
-	},
-	"bugs": {
-		"url": "https://github.com/smartin85/moment-period/issues"
-	},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smartin85/moment-period.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smartin85/moment-period/issues"
+  },
   "keywords": [
     "momentjs",
     "date",
@@ -30,12 +31,12 @@
   "devDependencies": {
     "gulp": "3.9.1",
     "gulp-uglifyjs": "0.6.2",
-    "jasmine-core": "2.6.4",
-    "karma": "1.7.0",
+    "jasmine-core": "2.8.0",
+    "karma": "1.7.1",
     "karma-chrome-launcher": "2.2.0",
     "karma-global-preprocessor": "0.0.2",
     "karma-jasmine": "1.1.0",
     "karma-phantomjs-launcher": "1.0.4",
-    "run-sequence": "2.0.0"
+    "run-sequence": "2.2.0"
   }
 }
