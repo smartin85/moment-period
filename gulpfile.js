@@ -15,14 +15,14 @@ function runKarma(singleRun, done) {
  * Run test once and exit
  */
 gulp.task('test', function (done) {
-    return runKarma(true, done);
+    runKarma(true, done);
 });
 
 /**
  * Run test continually
  */
 gulp.task('test:dev', function (done) {
-    return runKarma(false, done);
+    runKarma(false, done);
 });
 
 /**
