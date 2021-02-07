@@ -1,7 +1,7 @@
+const { series } = require('gulp');
 var gulp = require('gulp'),
     KarmaServer = require('karma').Server,
     uglify = require('gulp-uglifyjs'),
-    runSequence = require('run-sequence'),
     path = require('path');
 
 function runKarma(singleRun, done) {
@@ -14,27 +14,27 @@ function runKarma(singleRun, done) {
 /**
  * Run test once and exit
  */
-gulp.task('test', function (done) {
+function runTests (done) {
     runKarma(true, done);
-});
+}
 
 /**
  * Run test continually
  */
-gulp.task('test:dev', function (done) {
+function runTdd(done) {
     runKarma(false, done);
-});
+};
 
 /**
  * Minify the source file
  */
-gulp.task('minify', function (done) {
+function minify(done) {
     return gulp
         .src('moment-period.js')
         .pipe(uglify('moment-period.min.js'))
         .pipe(gulp.dest('./'));
-});
+};
 
-gulp.task('default', function () {
-    return runSequence('test', 'minify');
-});
+exports.runTdd = runTdd;
+exports.minify = minify;
+exports.default = series(runTests, minify);

@@ -11,7 +11,7 @@
 }(this, function (moment) {
 	"use strict";
 
-    var VERSION = "1.0.6",
+    var VERSION = "1.0.7",
         periods = {},
         periodFlag = '_p',
         optionsFlag = '_po',
@@ -118,7 +118,7 @@
     function getFromTo(mom) {
         mom = moment.isMoment(mom) ? mom.clone() : moment(mom);
         return {
-            from: mom.period(true),
+            from: mom.clone().period(true),
             to: mom.clone().period(false)
         };
     }

@@ -1,6 +1,6 @@
 {
   "name": "moment-period",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Handling periods in moment.js",
   "main": "moment-period.js",
   "scripts": {
@@ -30,14 +30,13 @@
     "time"
   ],
   "devDependencies": {
-    "gulp": "3.9.1",
+    "gulp": "4.0.2",
     "gulp-uglifyjs": "0.6.2",
-    "jasmine-core": "3.1.0",
-    "karma": "2.0.4",
-    "karma-chrome-launcher": "2.2.0",
+    "jasmine-core": "3.6.0",
+    "karma": "6.1.0",
+    "karma-chrome-launcher": "3.1.0",
     "karma-global-preprocessor": "0.0.2",
-    "karma-jasmine": "1.1.2",
-    "karma-phantomjs-launcher": "1.0.4",
+    "karma-jasmine": "4.0.1",
     "run-sequence": "2.2.1"
   }
 }
