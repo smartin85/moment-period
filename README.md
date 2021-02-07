@@ -1,6 +1,6 @@
 # moment-period
-[![MIT License][license-image]][license-url] 
-[![Build Status][travis-image]][travis-url]
+[![MIT License][license-image]][license-url]
+[![Build Status][azure-pipeline-image]][azure-pipeline-url]
 [![npm version][npm-image]][npm-url]  
 
 Handling periods in moment.js
@@ -154,3 +154,6 @@ moment.period.setDefault(null);
 
 [npm-image]: https://badge.fury.io/js/moment-period.svg
 [npm-url]: https://badge.fury.io/js/moment-period
+
+[azure-pipeline-image]: https://dev.azure.com/smartin85/moment-period/_apis/build/status/smartin85.moment-period?branchName=master
+[azure-pipeline-url]: https://dev.azure.com/smartin85/moment-period/_build/latest?definitionId=1&branchName=master
