@@ -1,12 +1,12 @@
 {
   "name": "moment-period",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Handling periods in moment.js",
   "main": "moment-period.js",
   "scripts": {
-    "test": "gulp test",
-    "update": "ncu -u",
-    "build": "gulp"
+    "test": "karma start --single-run && cross-env MINIFIED_TESTS=true karma start --single-run",
+    "tdd": "karma start",
+    "build": "uglifyjs -m -c -o moment-period.min.js moment-period.js"
   },
   "author": "Smartin Nematronic",
   "license": "MIT",
@@ -30,13 +30,12 @@
     "time"
   ],
   "devDependencies": {
-    "gulp": "4.0.2",
-    "gulp-uglifyjs": "0.6.2",
+    "cross-env": "^7.0.3",
     "jasmine-core": "3.6.0",
     "karma": "6.1.0",
     "karma-chrome-launcher": "3.1.0",
     "karma-global-preprocessor": "0.0.2",
     "karma-jasmine": "4.0.1",
-    "run-sequence": "2.2.1"
+    "uglify-js": "^3.12.8"
   }
 }
