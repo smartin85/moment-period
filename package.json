@@ -1,6 +1,6 @@
 {
   "name": "moment-period",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Handling periods in moment.js",
   "main": "moment-period.js",
   "scripts": {

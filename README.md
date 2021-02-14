@@ -153,7 +153,7 @@ moment.period.setDefault(null);
 [versioneye-url]: https://www.versioneye.com/user/projects/58a0655f940b230032da590e
 
 [npm-image]: https://badge.fury.io/smartin85/moment-period.svg
-[npm-url]: https://www.npmjs.com/package/ng-cli-hooks
+[npm-url]: https://www.npmjs.com/package/moment-period
 
 [downloads-image]: https://img.shields.io/npm/dt/moment-period.svg
 
