@@ -2,6 +2,7 @@
 [![MIT License][license-image]][license-url]
 [![Build Status][azure-pipeline-image]][azure-pipeline-url]
 [![npm version][npm-image]][npm-url]
+[![npm downloads][downloads-image]][npm-url]
 
 [![Buy me a coffee][buy-me-a-coffee-image]][buy-me-a-coffee-url]
 
@@ -151,8 +152,10 @@ moment.period.setDefault(null);
 [versioneye-image]: https://www.versioneye.com/user/projects/58a0655f940b230032da590e/badge.svg
 [versioneye-url]: https://www.versioneye.com/user/projects/58a0655f940b230032da590e
 
-[npm-image]: https://badge.fury.io/js/moment-period.svg
-[npm-url]: https://badge.fury.io/js/moment-period
+[npm-image]: https://badge.fury.io/smartin85/moment-period.svg
+[npm-url]: https://www.npmjs.com/package/ng-cli-hooks
+
+[downloads-image]: https://img.shields.io/npm/dt/moment-period.svg
 
 [azure-pipeline-image]: https://dev.azure.com/smartin85/moment-period/_apis/build/status/smartin85.moment-period?branchName=master
 [azure-pipeline-url]: https://dev.azure.com/smartin85/moment-period/_build/latest?definitionId=1&branchName=master
