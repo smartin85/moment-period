@@ -1,7 +1,9 @@
 # moment-period
 [![MIT License][license-image]][license-url]
 [![Build Status][azure-pipeline-image]][azure-pipeline-url]
-[![npm version][npm-image]][npm-url]  
+[![npm version][npm-image]][npm-url]
+
+[![Buy me a coffee][buy-me-a-coffee-image]][buy-me-a-coffee-url]
 
 Handling periods in moment.js
 
@@ -143,11 +145,8 @@ period.period(null).period(); // undefined or default-period
 moment.period.setDefault(null);
 ```
 
-[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
-
-[travis-url]: http://travis-ci.org/smartin85/moment-period
-[travis-image]: https://travis-ci.org/smartin85/moment-period.svg?branch=master
 
 [versioneye-image]: https://www.versioneye.com/user/projects/58a0655f940b230032da590e/badge.svg
 [versioneye-url]: https://www.versioneye.com/user/projects/58a0655f940b230032da590e
@@ -157,3 +156,6 @@ moment.period.setDefault(null);
 
 [azure-pipeline-image]: https://dev.azure.com/smartin85/moment-period/_apis/build/status/smartin85.moment-period?branchName=master
 [azure-pipeline-url]: https://dev.azure.com/smartin85/moment-period/_build/latest?definitionId=1&branchName=master
+
+[buy-me-a-coffee-image]: https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png
+[buy-me-a-coffee-url]: https://www.buymeacoffee.com/smartin
